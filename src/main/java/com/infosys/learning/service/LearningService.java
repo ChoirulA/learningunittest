@@ -1,8 +1,13 @@
 package com.infosys.learning.service;
 
+import com.infosys.learning.data.Data;
+import com.infosys.learning.data.Respond;
 import com.infosys.learning.dto.Person;
 import com.infosys.learning.live.Live;
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class LearningService {
@@ -67,6 +72,25 @@ public class LearningService {
             address = "Other City";
         }
         return address;
+    }
+
+    //Tugas 3
+
+    public Respond getPerson(String name, int yearOfBirth){
+        Respond respond = new Respond();
+        Data data = new Data();
+
+        respond.setName(name);
+
+        Date date = new Date();
+        SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+        String currentYear = getYearFormat.format(date);
+        int now = Integer.parseInt(currentYear);
+
+        data.setAge(now-yearOfBirth);
+
+        respond.setData(data);
+        return respond;
     }
 
 }

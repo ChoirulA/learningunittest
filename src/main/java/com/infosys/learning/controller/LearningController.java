@@ -1,5 +1,8 @@
 package com.infosys.learning.controller;
 
+import com.infosys.learning.data.Biodata;
+import com.infosys.learning.data.Born;
+import com.infosys.learning.data.Respond;
 import com.infosys.learning.dto.Person;
 import com.infosys.learning.live.Live;
 import com.infosys.learning.service.LearningService;
@@ -43,5 +46,12 @@ public class LearningController {
     @PostMapping(value = "/getcityv3", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getCityV3(@RequestBody(required = true) Live live){
         return learningService.getCityV3(live.getCity());
+    }
+
+    //Tugas 3
+
+    @PostMapping(value = "/getperson", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Respond getPerson(@RequestBody(required = true) Born born){
+        return learningService.getPerson(born.getName(), born.getYearOfBirth());
     }
 }
