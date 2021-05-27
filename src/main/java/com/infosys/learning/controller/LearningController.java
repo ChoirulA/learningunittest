@@ -1,10 +1,10 @@
 package com.infosys.learning.controller;
 
-import com.infosys.learning.data.Biodata;
 import com.infosys.learning.data.Born;
 import com.infosys.learning.data.Respond;
 import com.infosys.learning.dto.Person;
 import com.infosys.learning.live.Live;
+import com.infosys.learning.dto.UserRequest;
 import com.infosys.learning.service.LearningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -53,5 +53,12 @@ public class LearningController {
     @PostMapping(value = "/getperson", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Respond getPerson(@RequestBody(required = true) Born born){
         return learningService.getPerson(born.getName(), born.getYearOfBirth());
+    }
+
+    //Tugas 4
+
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String register(@RequestBody(required = true) UserRequest userRequest){
+        return learningService.register(userRequest);
     }
 }
