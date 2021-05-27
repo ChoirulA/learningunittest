@@ -116,4 +116,13 @@ public class LearningService {
             return "Register Success!";
         }
     }
+
+    public User login(UserRequest userRequest){
+        User existUser = userRepository.findByUserNameAndPassWord(userRequest.getUsername(), userRequest.getPassword());
+        if(existUser == null){
+            return null;
+        }else{
+            return existUser;
+        }
+    }
 }
